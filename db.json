@@ -1,0 +1,16 @@
+{
+    "toys":[
+        {
+            "id":1,
+            "name": "Woody",
+            "image":"https://giphy.com/gifs/starz-woody-toystory3-UTk0w0RBYnkJ6JoPPP",
+            "likes": 8
+        },
+        {
+            "id":2,
+            "name": "Buzz LightYear",
+            "image":"https://giphy.com/gifs/something-forums-awful-LIzmN5oIcHdCM",
+            "likes": 8 
+        }
+    ]
+}
