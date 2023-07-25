@@ -14,6 +14,7 @@ const linkStyles = {
 export default function Navbar(){
     return(
         <div>
+            <NavLink to="/Home" exact style={linkStyles}>Home</NavLink>
             <NavLink to="/About" exact style={linkStyles}>About</NavLink>
             <NavLink to="/Contact" exact style={linkStyles}>Contact</NavLink>
         </div>
