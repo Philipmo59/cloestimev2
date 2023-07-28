@@ -17,6 +17,7 @@ export default function Navbar(){
             <NavLink to="/Home" exact style={linkStyles}>Home</NavLink>
             <NavLink to="/About" exact style={linkStyles}>About</NavLink>
             <NavLink to="/Contact" exact style={linkStyles}>Contact</NavLink>
+            <NavLink to="/Post" exact style={linkStyles}>Admin</NavLink>
         </div>
       )
 }

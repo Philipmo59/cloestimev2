@@ -10,7 +10,7 @@ function App() {
   const [clothes,setClothes] = useState([])
   
   const getData = () => {
-    fetch("http://localhost:3000/toys",{
+    fetch("http://localhost:3000/clothes",{
       headers: {
         'Content-Type': 'application/json',
         'Accept': "application/json"
@@ -24,12 +24,9 @@ function App() {
     getData()
   },[])
 
-
-  
   return(
     <div>
       <Navbar/>
-      <Post/>
       <Switch>
         <Route exact path="/Home">
           <ClosetContainer clothes={clothes}/>
@@ -39,6 +36,9 @@ function App() {
         </Route>
         <Route exact path ="/Contact">
           <Contact/>
+        </Route>
+        <Route exact path = "/Post">
+          <Post clothes={clothes} setClothes={setClothes}/>
         </Route>
       </Switch>
     </div>
