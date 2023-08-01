@@ -7,6 +7,7 @@ export default function ClosetContainer({clothes}){
     const clothesImages = clothes.map((cloth)=>{
         return(
         <ClothingCard 
+            key={cloth.id}
             id={cloth.id} 
             description={cloth.description} 
             image={cloth.image} 

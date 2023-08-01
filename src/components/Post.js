@@ -1,14 +1,22 @@
-import React from "react";
+import React,{useState} from "react";
 
 export default function Post({clothes, setClothes}){
+    const [formChange,setFormChange] = useState("")
+    const [category,setCategory] = useState("")
+    const [description,setDescription] = useState("")
+    const [image,setImage] = useState("")
+    const [price,setPrice] = useState("")
+    const [storage,setStorage] = useState("")
+
     function handleSubmit(event){
         event.preventDefault()
+        setClothes({formChange})
         const dataBase = {
-            "category": event.target[0].value,
-            "description": event.target[1].value,
-            "image": event.target[2].value,
-            "price": event.target[4].value,
-            "storage": event.target[3].value
+            "category": category,
+            "description": description,
+            "image": image,
+            "price": price,
+            "storage": storage
         }
         fetch('http://localhost:3000/clothes', {
         method: 'POST',
@@ -19,19 +27,18 @@ export default function Post({clothes, setClothes}){
         body: JSON.stringify(dataBase)
     })
         .then(res=>{
-            setClothes([...clothes, dataBase])
+            setClothes([...clothes, formChange])
+            console.log(clothes)
             if(res.status === 201) alert("Successful")
         })
     }
-    console.log(clothes)
-    console.log(typeof (clothes))
     return(
         <div className="Post">
             <p>Admin Use only</p>
             <form onSubmit={handleSubmit}>
                 <label>
                     Type of Article:
-                    <select>
+                    <select value={category} onChange={(event) => setCategory(event.target.value)}>
                         <option value="T-Shirt">T-Shirt</option>
                         <option value="Pants">Pants</option>
                         <option value="Shorts">Shorts</option>
@@ -40,13 +47,13 @@ export default function Post({clothes, setClothes}){
                     </select>
                 </label>
                     Description:
-                    <input type="text"/>
+                    <input type="text" value={description} onChange={(event) => setDescription(event.target.value)}/>
                     Image:
-                    <input type="text"/>
+                    <input type="text"value={image} onChange={(event) => setImage(event.target.value)}/>
                     Storage:
-                    <input type="text"/>
+                    <input type="text" value={storage} onChange={(event) => setStorage(event.target.value)}/>
                     Price:
-                    <input type="text"/>
+                    <input type="text" value={price} onChange={(event) => setPrice(event.target.value)}/>
                 <label>
                 </label>
                 <button>Add to Closet</button>
