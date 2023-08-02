@@ -6,6 +6,7 @@ export default function Post({clothes, setClothes}){
     const [image,setImage] = useState("")
     const [price,setPrice] = useState("")
     const [storage,setStorage] = useState("")
+
     function handleSubmit(event){
         event.preventDefault()
         const dataBase = {
@@ -25,9 +26,12 @@ export default function Post({clothes, setClothes}){
         body: JSON.stringify(dataBase)
     })
         .then(res=>{
-            setClothes([...clothes, dataBase])
-            console.log(clothes)
+            res.json()
             if(res.status === 201) alert("Successful")
+        })
+        .then((data)=>{
+            console.log(data)
+            setClothes([...clothes, dataBase])
         })
     }
     return(
@@ -36,7 +40,8 @@ export default function Post({clothes, setClothes}){
             <form onSubmit={handleSubmit}>
                 <label>
                     Type of Article:
-                    <select value={category} onChange={(event) => setCategory(event.target.value)}>
+                    <select value={category} onChange={(event) => setCategory(event.target.value)}> 
+                        <option value=""></option>
                         <option value="T-Shirt">T-Shirt</option>
                         <option value="Pants">Pants</option>
                         <option value="Shorts">Shorts</option>
