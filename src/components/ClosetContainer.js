@@ -1,5 +1,6 @@
 import React from "react";
 import ClothingCard from "./ClothingCard";
+import { v4 as uuid } from "uuid"
 
 export default function ClosetContainer({clothes}){
     if(clothes.length === 0) return <h1>Loading...</h1>
@@ -7,8 +8,7 @@ export default function ClosetContainer({clothes}){
     const clothesImages = clothes.map((cloth)=>{
         return(
         <ClothingCard 
-            key={cloth.id}
-            id={cloth.id} 
+            key={uuid()} 
             description={cloth.description} 
             image={cloth.image} 
             price={cloth.price} 
