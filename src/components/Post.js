@@ -1,17 +1,15 @@
 import React,{useState} from "react";
 
 export default function Post({clothes, setClothes}){
-    const [formChange,setFormChange] = useState("")
     const [category,setCategory] = useState("")
     const [description,setDescription] = useState("")
     const [image,setImage] = useState("")
     const [price,setPrice] = useState("")
     const [storage,setStorage] = useState("")
-
     function handleSubmit(event){
         event.preventDefault()
-        setClothes({formChange})
         const dataBase = {
+            "key": description,
             "category": category,
             "description": description,
             "image": image,
@@ -27,7 +25,7 @@ export default function Post({clothes, setClothes}){
         body: JSON.stringify(dataBase)
     })
         .then(res=>{
-            setClothes([...clothes, formChange])
+            setClothes([...clothes, dataBase])
             console.log(clothes)
             if(res.status === 201) alert("Successful")
         })
