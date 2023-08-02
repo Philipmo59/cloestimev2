@@ -29,8 +29,7 @@ export default function Post({clothes, setClothes}){
             res.json()
             if(res.status === 201) alert("Successful")
         })
-        .then((data)=>{
-            console.log(data)
+        .then(()=>{
             setClothes([...clothes, dataBase])
         })
     }
